@@ -1,31 +1,33 @@
-// var options = {
-//     ca: fs.readFileSync('/usr/local/ssl/certificate/cabundle.crt'),
-//     cert: fs.readFileSync('/usr/local/ssl/certificate/gogtour.com.crt'),
-//     key: fs.readFileSync('/usr/local/ssl/certificate/gogtour.com.key')
-// };
+// Require HTTP module (to start server) and Socket.IO
 var app = require('express')();
-var fs = require('fs');
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var redis = require('redis');
-var https = require('https');
-// var privateKey  = fs.readFileSync('/usr/local/ssl/certificate/gogtour.com.key').toString();
-// var certificate = fs.readFileSync('/usr/local/ssl/certificate/gogtour.com.crt').toString();
-// var credentials = {key: privateKey, cert: certificate};
 
 var port = '8890';
-sequence = 1;
 usernames = [];
 
-// var server = https.createServer(credentials, app);
-var server = https.createServer(app);
-var io = require('socket.io')(server);
+// Start the server at port 8080
+// var server = http.createServer(function(req, res){ 
 
-// app.get('/', function(req, res) {
-// res.sendfile('/');
+//     // Send HTML headers and message
+//     res.writeHead(200,{ 'Content-Type': 'text/html' }); 
+//     res.end('<h1>Hello Socket Lover!</h1>');
 // });
+// server.listen(port);
 
-server.listen(port);
+// var server = http.createServer(app);
+var io = require('socket.io');
 
-io.on('connection', function (socket) {
+// Create a Socket.IO instance, passing it our server
+var socket = io.listen(server);
+
+
+server.listen(port, function () {
+    console.log('Express server listening on port %d in %s mode', port, app.get('env'));
+});
+
+socket.on('connection', function (socket) {
     console.info('New client connected (id=' + socket.id + ').');
     usernames.push(socket.id);
 
@@ -38,7 +40,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('room', function  (data) {
-        console.log("join room", data.room);
+        console.log("Join room", data.room);
         socket.join(data.room);
         socket.room = data.room;
         socket.channel = data.channel;

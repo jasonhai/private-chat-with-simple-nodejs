@@ -1,5 +1,5 @@
-# private-chat-with-simple-nodejs
-Private chat with simple Nodejs
+# Overview
+This is a simple app to guide the people how to create a simple chat with Socket, Nodejs, Express and Yii2 basic
 
 # Run composer self-update
 composer self-update

@@ -20,6 +20,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+    
     <?php $this->head() ?>
 </head>
 <body>
@@ -51,7 +53,8 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ),
+            Yii::$app->user->isGuest ? '' : ['label' => 'Chat', 'url' => ['/site/chat']]
         ],
     ]);
     NavBar::end();
