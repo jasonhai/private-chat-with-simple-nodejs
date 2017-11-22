@@ -95,10 +95,11 @@ socket.on('connection', function (socket) {
     });
 
 });
+```
 
 ## 8. Update Yii with chat form and to run Socket.io client script
-Add socket.io client script to the head section of main layout file (view/layouts/main.php):
-
+> Add socket.io client script to the head section of main layout file (view/layouts/main.php):
+```
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,9 +108,9 @@ Add socket.io client script to the head section of main layout file (view/layout
     <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
     <?php $this->head() ?>
 </head>
-
-After this, create new web/js/notification.js file with this content:
-
+```
+> After this, create new web/js/notification.js file with this content:
+```
 $( document ).ready(function() {
     $('#message-field').keyup(function(e) {
         if((e.keyCode == 13) && ($(this).val() != '')) {
@@ -158,16 +159,16 @@ $( document ).ready(function() {
         socket.emit('room', {room: room, channel: channel});
     }
 });
-
-We also must add notification.js reference to assets/AppAsset:
-
+```
+> We also must add notification.js reference to assets/AppAsset:
+```
 public $js = [
     'js/notification.js'
 ];
-
-Update your views/site/index.php view file with new chat form and notifications div:
+```
+> Update your views/site/index.php view file with new chat form and notifications div:
 <?php
-
+```
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\Message;
@@ -175,7 +176,7 @@ use app\components\CmsFormatter;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Chat - Gogtour';
+$this->title = 'Chat';
 
 $js = <<<JS
 $('#chat-form').submit(function() {
@@ -297,8 +298,10 @@ $this->registerJs($js, \yii\web\View::POS_READY);
         $(".chatRList").animate({scrollTop: $('.chatRList').prop("scrollHeight")}, 100);
     });
 </script>
+```
 
-At the end we also must update our controllers/SiteController::index() method:
+> At the end we also must update our controllers/SiteController::index() method:
+```
 public function actionChat()
 {
     try {
@@ -372,15 +375,15 @@ public function actionChat()
         $this->redirect('/');
     }
 }
+```
 
-## 9. Running application
-    
-First, we must start Redis server (If not already) with (Navigate to Redis directory):
+## 9. Running application    
+> First, we must start Redis server (If not already) with (Navigate to Redis directory):
 
 $ src/redis-server
-Next start Redis CLI monitor with:
+> Next start Redis CLI monitor with:
 
 $ src/redis-cli monitor
-Then run server.js with (Navigate to nodejs folder):
+> Then run server.js with (Navigate to nodejs folder):
 
 $ node server.js
