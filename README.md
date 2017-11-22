@@ -1,26 +1,26 @@
-# Overview
-This is a simple app to guide the people how to create a simple chat with Socket, Nodejs, Express and Yii2 basic
+## Overview
+> This is a simple app to guide the people how to create a simple chat with Socket, Nodejs, Express and Yii2 basic
 
-# 1. Run composer self-update
-composer self-update
+## 1. Run composer self-update
+> composer self-update
 
-# 2. Run composer global require fxp/composer-asset-plugin --no-plugins
-composer global require fxp/composer-asset-plugin --no-plugins
+## 2. Run composer global require fxp/composer-asset-plugin --no-plugins
+> composer global require fxp/composer-asset-plugin --no-plugins
 
-# 3. Install Yii 2 basic application template
-php composer.phar create-project yiisoft/yii2-app-basic basic 2.0.6
+## 3. Install Yii 2 basic application template
+> php composer.phar create-project yiisoft/yii2-app-basic basic 2.0.6
 
-# 4. Install NodeJS
-Instructions here: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
+## 4. Install NodeJS
+> Instructions here: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
 
-# 5. Install Redis
-Instructions here: https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
+## 5. Install Redis
+> Instructions here: https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
 
-# 6. Install yii2-redis extension
-php composer.phar require --prefer-dist yiisoft/yii2-redis
+## 6. Install yii2-redis extension
+- php composer.phar require --prefer-dist yiisoft/yii2-redis
 
-After install configure yii2-redis in your config/web.php config file:
-return [
+- After install configure yii2-redis in your config/web.php config file:
+```return [
     //....
     'components' => [
         'redis' => [
@@ -30,9 +30,9 @@ return [
             'database' => 0,
         ],
     ]
-];
+];```
 
-# 7. Create the NodeJS server
+## 7. Create the NodeJS server
 Create /nodejs folder in your Yii project root. $ cd nodejs into newly created folder and run this commands in your console to install express, socket.io and redis.io:
 
 $ npm install express
@@ -95,7 +95,7 @@ socket.on('connection', function (socket) {
 
 });
 
-# 8. Update Yii with chat form and to run Socket.io client script
+## 8. Update Yii with chat form and to run Socket.io client script
 Add socket.io client script to the head section of main layout file (view/layouts/main.php):
 
 <head>
@@ -372,7 +372,7 @@ public function actionChat()
     }
 }
 
-# 9. Running application
+## 9. Running application
     
 First, we must start Redis server (If not already) with (Navigate to Redis directory):
 
