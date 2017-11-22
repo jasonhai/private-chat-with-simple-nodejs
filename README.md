@@ -167,14 +167,13 @@ public $js = [
 ];
 ```
 > Update your views/site/index.php view file with new chat form and notifications div:
-<?php
+
 ```
+<?php
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\Message;
 use app\components\CmsFormatter;
-
-/* @var $this yii\web\View */
 
 $this->title = 'Chat';
 
@@ -197,7 +196,8 @@ $('#chat-form').submit(function() {
 JS;
 $this->registerJs($js, \yii\web\View::POS_READY);
 ?>
-
+```
+```
 <div class="hfeed site " id="page">
     <section class="main chat-page gog-chat-custom tours">
         <div class="wrapper">
@@ -292,7 +292,8 @@ $this->registerJs($js, \yii\web\View::POS_READY);
         </div>
     </section>
 </div>
-
+```
+```
 <script>
     $(document).ready(function () {
         $(".chatRList").animate({scrollTop: $('.chatRList').prop("scrollHeight")}, 100);
