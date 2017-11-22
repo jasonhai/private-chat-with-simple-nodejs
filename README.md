@@ -30,17 +30,17 @@
             'database' => 0,
         ],
     ]
-];```
+];
 
 ## 7. Create the NodeJS server
-Create /nodejs folder in your Yii project root. $ cd nodejs into newly created folder and run this commands in your console to install express, socket.io and redis.io:
+> Create /nodejs folder in your Yii project root. $ cd nodejs into newly created folder and run this commands in your console to install express, socket.io and redis.io:
 
 $ npm install express
 $ npm install socket.io
 $ npm install redis
 
 After installing create new /nodejs/server.js file with this content:
-
+```
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
