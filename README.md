@@ -20,8 +20,8 @@
 - php composer.phar require --prefer-dist yiisoft/yii2-redis
 
 - After install configure yii2-redis in your config/web.php config file:
-```return [
-    //....
+```
+return [
     'components' => [
         'redis' => [
             'class' => 'yii\redis\Connection',
@@ -31,6 +31,7 @@
         ],
     ]
 ];
+```
 
 ## 7. Create the NodeJS server
 > Create /nodejs folder in your Yii project root. $ cd nodejs into newly created folder and run this commands in your console to install express, socket.io and redis.io:
